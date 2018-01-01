@@ -11,9 +11,9 @@ def index():
 
 @app.route('/rsvp', methods=['POST'])
 def rsvp():
-    data = request_dict(request.get_data())
     print("Data:")
     print(data)
+    data = request_dict(request.get_data())
     email = unquote_plus(data["email"])
     return email
 
