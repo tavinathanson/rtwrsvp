@@ -1,1 +1,1 @@
-web: gunicorn picks:app --log-file=-
+web: gunicorn rsvp:app --log-file=-
