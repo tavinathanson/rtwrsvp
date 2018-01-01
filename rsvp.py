@@ -1,7 +1,6 @@
 from flask import Flask, request
 from flask.json import jsonify
 from six.moves.urllib.parse import unquote_plus
-from werkzeug.datastructures import MultiDict
 
 app = Flask(__name__)
 
@@ -11,11 +10,5 @@ def index():
 
 @app.route('/rsvp', methods=['POST'])
 def rsvp():
-    print("Data:")
-    print(data)
-    data = request_dict(request.get_data())
-    email = unquote_plus(data["email"])
+    email = unquote_plus(request.form["email"])
     return email
-
-def request_dict(data):
-    return MultiDict([part.split("=") for part in data.split("&")])
