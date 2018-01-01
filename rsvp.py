@@ -1,6 +1,5 @@
 from flask import Flask, request
 from flask.json import jsonify
-from six.moves.urllib.parse import unquote_plus
 
 app = Flask(__name__)
 
@@ -10,5 +9,5 @@ def index():
 
 @app.route('/rsvp', methods=['POST'])
 def rsvp():
-    email = unquote_plus(request.form["email"])
+    email = request.form["email"]
     return email
